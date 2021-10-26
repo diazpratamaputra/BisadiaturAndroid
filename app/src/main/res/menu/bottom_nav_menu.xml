@@ -8,9 +8,9 @@
     <item
         android:id="@+id/menuAkun"
         android:icon="@drawable/ic_account_circle"
-        android:title="@string/akun" />
+        android:title="@string/title_akun" />
     <item
         android:id="@+id/menuKeranjang"
         android:icon="@drawable/ic_keranjang"
-        android:title="@string/keranjang" />
+        android:title="@string/title_keranjang" />
 </menu>

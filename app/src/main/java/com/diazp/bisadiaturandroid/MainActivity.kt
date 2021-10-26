@@ -1,14 +1,17 @@
 package com.diazp.bisadiaturandroid
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.diazp.bisadiaturandroid.activity.LoginActivity
 import com.diazp.bisadiaturandroid.fragment.AkunFragment
 import com.diazp.bisadiaturandroid.fragment.HomeFragment
 import com.diazp.bisadiaturandroid.fragment.KeranjangFragment
+import com.diazp.bisadiaturandroid.helper.SharedPref
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -22,9 +25,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var menuItem: MenuItem
     private lateinit var bottomNavigationView: BottomNavigationView
 
+    private var statusLogin = false
+
+    private lateinit var s:SharedPref
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        s = SharedPref(this)
 
         setBotNav()
     }
@@ -47,7 +56,11 @@ class MainActivity : AppCompatActivity() {
                     callFragment(0, fragmentHome)
                 }
                 R.id.menuAkun -> {
-                    callFragment(1, fragmentAkun)
+                    if (s.getStatusLogin()) {
+                        callFragment(1, fragmentAkun)
+                    } else {
+                        startActivity(Intent(this, LoginActivity::class.java))
+                    }
                 }
                 R.id.menuKeranjang -> {
                     callFragment(2, fragmentKeranjang)
