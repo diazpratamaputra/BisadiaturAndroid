@@ -1,13 +1,13 @@
 package com.diazp.bisadiaturandroid
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.diazp.bisadiaturandroid.activity.LoginActivity
+import com.diazp.bisadiaturandroid.activity.MasukActivity
 import com.diazp.bisadiaturandroid.fragment.AkunFragment
 import com.diazp.bisadiaturandroid.fragment.HomeFragment
 import com.diazp.bisadiaturandroid.fragment.KeranjangFragment
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                     if (s.getStatusLogin()) {
                         callFragment(1, fragmentAkun)
                     } else {
-                        startActivity(Intent(this, LoginActivity::class.java))
+                        startActivity(Intent(this, MasukActivity::class.java))
                     }
                 }
                 R.id.menuKeranjang -> {
